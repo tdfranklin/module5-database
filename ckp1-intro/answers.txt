@@ -1,0 +1,85 @@
+1. Given the values table below, what data types do each of these values represent?
+
+    A Clockwork Orange is a string.
+    42 is an integer.
+    09/02/1945 is a date.
+    98.7 is a float.
+    15.99 is a float.
+
+2. Explain in your own words when a database might be used. Explain when a text file might be used.
+
+    You would use a database anytime you want persistent data for an application that multiple people will be using.
+    You might use a text file if you were the only person who would be using the application, but even then I would say
+    a database is usually a better choice.  I personally would only use a text file for something like this assignment.
+
+3. Describe one difference between SQL and other programming languages.
+
+    SQL is declarative rather than procedural, which means you don't have to give it the steps to get the answer.
+
+4. In your own words, explain how the pieces of a database system fit together at a high level.
+
+    I'm not sure I understand the question - a database is a system that will store data in an organized manner
+    and allow you to retrieve it via queries.
+
+5. Explain the meaning of table, row, column, and value.
+
+    The table would be the entire spreadsheet - each table will have it's own columns and rows.
+    A row would contain each entry into the database that corresponds to the column.
+    A column would be what each value below represents (name, address, email, etc).
+    A value would be an entry in database, or in spreadsheet terms, a single cell.
+
+6. List 3 data types that can be used in a table.
+
+    String, Integer, Float.
+
+7. Given the payments table below, provide an English description and the results for the following queries:
+
+    SELECT date, amount
+    FROM payments;
+
+        What are the dates and amounts on the payment table?
+        Result:
+            5/1/16          1500.00
+            5/10/16         37.00
+            5/15/16         124.93
+            5/23/16         54.72
+
+    SELECT amount
+    FROM payments
+    WHERE amount > 500;
+
+        What amounts on payment table are greater than $500
+        Result:
+            1500.00
+
+    SELECT *
+    FROM payments
+    WHERE payee = "Mega Foods";
+
+        What data is available on payment table for "Mega Foods" as payee?
+        Result:
+            6/15/16         Mega Foods      124.93      Groceries
+
+8. Given the users table below, write the following SQL queries and their results:
+
+    Select the email and sign-up date for the user named DeAndre Data.
+    Select the user ID for the user with email 'aleesia.algorithm@uw.edu'.
+    Select all the columns for the user ID equal to 4.
+
+        SELECT email, signup
+        FROM users
+        WHERE name = "DeAndre Data";
+            Results:
+                datad@comcast.net       2008-01-20
+
+        SELECT userid
+        FROM users
+        WHERE email = "aleesia.algorithm@uw.edu"
+            Results:
+                1
+
+        SELECT *
+        FROM users
+        WHERE userid = 4
+            Results:
+                4       Brandy Boolean      bboolean@nasa.gov       1999-10-15
