@@ -1,0 +1,98 @@
+1. Create a database for the model we built in the example. Create a SQL file that creates the tables and inserts sample data (the questions below will help you create the data).
+    Write queries that demonstrate the following scenarios:
+
+                SEE hotel.sql FOR SQL FILE
+
+        Find a guest who exists in the database and has not booked a room.
+
+                SELECT guests.first_name, guests.last_name
+                FROM bookings
+                FULL JOIN guests ON bookings.guest = guests.id
+                WHERE bookings.room IS NULL;
+
+        Find bookings for a guest who has booked two rooms for the same dates.
+
+                SELECT guests.first_name, guests.last_name, bookings.check_in
+                FROM bookings
+                FULL JOIN guests ON bookings.guest = guests.id
+                GROUP BY check_in, first_name, last_name
+                HAVING count (check_in) > 1;
+
+        Find bookings for a guest who has booked one room several times on different dates.
+
+                SELECT first_name, last_name
+                FROM bookings
+                FULL JOIN guests ON guest = id
+                GROUP BY first_name, last_name
+                HAVING count(first_name) > 1;
+
+        Count the number of unique guests who have booked the same room.
+
+                SELECT DISTINCT count(guest), room
+                FROM bookings
+                GROUP BY room;
+
+2. Design a data model for students and the classes they have taken. The model should include the students' grades for a given class.
+
+        Work through the questions from the example above.
+
+                What classes/entites do we need to model?
+
+                        Classes, Students, Grades
+
+                What fields/attributes will each entity need?
+
+                        Classes - ID, Subject, Room_Number
+                        Students - ID, Name, Email
+                        Grades - Student, Class, Grade
+
+                What data types do we need to use?
+
+                        Pretty much just integer and varchar.
+
+                What relationships exist between entities?
+
+                        Many to many: students will have many classes and classes will have many students.  We will use Grades as a join table to link the two.
+
+                How should those relationships be represented in tables?
+
+                        grades.student = students.id and grades.class = classes.id
+
+        Document any assumptions you make about what data should be stored, what data types should be used, etc., and include them in a text file.
+        Ask questions of your mentor if you are unsure about parts of your model.
+        Draw the model using the notation used in the checkpoint and submit a picture. You can also use a tool like StarUML or quickdatabasediagrams.com if you choose.
+
+                        SEE FILE model.png
+
+3. Build a database for the students/classes data model. Create a SQL file that creates the tables and inserts sample data (the questions below will help you create the data).
+    Write queries that demonstrate the following scenarios:
+
+        Find all students who have taken a particular class.
+
+                SELECT name, subject, grade
+                FROM grades
+                JOIN students ON grades.student = students.id
+                JOIN classes ON grades.class = classes.id
+                WHERE subject = 'subject_name';
+
+        Count the number of each grade (using letter grades A-F) earned in a particular class.
+
+                SELECT grade, count(grade)
+                FROM grades
+                WHERE class = class_number
+                GROUP BY grade;
+
+        Find class names and the total number of students who have taken each class in the list.
+
+                SELECT subject, count(subject)
+                FROM grades
+                JOIN classes ON grades.class = classes.id
+                GROUP BY subject;
+
+        Find the class taken by the largest number of students.
+
+                SELECT subject
+                FROM grades
+                JOIN classes ON grades.class = classes.id
+                GROUP BY subject
+                ORDER BY count(subject) DESC LIMIT 1;
