@@ -1,0 +1,30 @@
+1. In your own words, explain the benefits of normalization. Include a real-world scenario where normalization is necessary.
+
+        The benefits of normalization would be saving space due to having less repeated data and also having better organization. I'm not sure
+        of a real world scenario where it would be "necessary", but I'm sure it would be highly preferred and used in any kind of records database.
+
+2. List and explain the different normal forms and how they relate to one another, with regard to your real-world scenario in the first question.
+
+        1NF - a single column cannot have more than one value!
+        2NF - 1NF + all columns have to relate to each other.
+        3NF - 2NF + cannot have a column that is dependant on another column that is dependant on the primary key.
+        BCNF - 3NF + cannot have dependencies on anything but primary key.
+
+3. The student_records table below shows the students and their grades in different subjects. The table is already in first normal form (1NF). 
+    Convert this table to the third normal form (3NF) using the techniques you learned in this checkpoint.
+
+        SEE FILE records.txt
+
+4. In your own words, explain the potential disadvantages of normalizing the data above. What are its trade-offs? Discuss this with your mentor.
+
+        I guess we can discuss in depth on Friday, but the disadvantages would be slower searching/queries due to having to join tables.
+
+5. Looking at the tables you have normalized. If you need to denormalize to improve query performance or speed up reporting, how would you carry out denormalization 
+    for this database design? Discuss potential strategies with your mentor.
+
+        Mostly I think I would remove the grades table and add 2 columns to the student table - a grade column that would have the letter grade and a professor_id 
+        column that would be a foreign key linking to the professor table.  I would still have separate tables for students and professors.
+
+6. Discuss the trade-offs between data normalization and denormalization in this scenario with your mentor.
+
+        I suppose we'll discuss this on Friday?

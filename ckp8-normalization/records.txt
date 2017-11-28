@@ -1,0 +1,26 @@
+RECORDS DATABASE:
+
+STUDENT TABLE:
+
+        id          |   name        |   email
+        1           |   John B      |   john.b20@hogwarts.edu
+        2           |   Sarah S     |   sarah.s20@hogwarts.edu
+        3           |   Martha L    |   martha.l20@hogwarts.edu
+        4           |   James G     |   james.g20@hogwarts.edu
+        5           |   Stanley P   |   stanley.p20@hogwarts.edu
+
+PROFESSOR TABLE:
+
+        id          |   name        |   subject
+        1           |   Natalie M   |   Economics
+        2           |   William C   |   Philosophy
+        3           |   Mark W      |   Mathematics
+
+GRADES TABLE:
+
+        student     |   professor   |   grade
+        1           |   2           |   A
+        2           |   2           |   C
+        3           |   1           |   A
+        4           |   3           |   B
+        5           |   1           |   B
